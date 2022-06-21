@@ -27,6 +27,9 @@ module "vms" {
       resource_pool_name = "resources"
       network_name       = "default_network"
       template_name      = "ubuntu_20"
+      guest_id           = "ubuntu64Guest"
+
+      tags = []
     },
     {
       annotation    = "Kubernetes Worker 1"
@@ -40,6 +43,9 @@ module "vms" {
       resource_pool_name = "resources"
       network_name       = "default_network"
       template_name      = "ubuntu_20"
+      guest_id           = "ubuntu64Guest"
+
+      tags = []
     }
   ]
 }
