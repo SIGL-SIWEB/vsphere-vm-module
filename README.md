@@ -7,7 +7,7 @@ on VMware vSphere.
 
 ```hcl
 module "vms" {
-  source = "https://github.com/SIGL-SIWEB/vsphere-vm-module.git?tag=1.0.0
+  source = "https://github.com/SIGL-SIWEB/vsphere-vm-module.git?tag=1.0.0"
 
   datacenter_id = data.vsphere_datacenter.dc.id
   folder_path = "my/vms/folder"
