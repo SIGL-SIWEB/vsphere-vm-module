@@ -58,6 +58,10 @@ resource "vsphere_virtual_machine" "vms" {
     template_uuid = data.vsphere_virtual_machine.template[count.index].id
   }
 
+  cdrom {
+    client_device = true
+  }
+
   vapp {
     properties = {
       "user-data"   = "${base64encode(var.vms[count.index].user_data)}",
