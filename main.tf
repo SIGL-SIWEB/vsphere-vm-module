@@ -72,3 +72,8 @@ resource "vsphere_virtual_machine" "vms" {
 
   tags = var.vms[count.index].tags
 }
+
+
+output "vms" {
+  value = vsphere_virtual_machine.vms
+}
