@@ -41,7 +41,7 @@ resource "vsphere_virtual_machine" "vms" {
 
   num_cpus                   = var.vms[count.index].num_cpus
   memory                     = var.vms[count.index].memory
-  wait_for_guest_net_timeout = 0
+  wait_for_guest_net_timeout = 5
   guest_id                   = var.vms[count.index].guest_id
 
   disk {
