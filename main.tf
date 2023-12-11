@@ -10,12 +10,6 @@ data "vsphere_resource_pool" "pool" {
   datacenter_id = var.datacenter_id
 }
 
-data "vsphere_network" "network" {
-  count         = length(var.vms)
-  name          = var.vms[count.index].network_name
-  datacenter_id = var.datacenter_id
-}
-
 data "vsphere_virtual_machine" "template" {
   count         = length(var.vms)
   name          = var.vms[count.index].template_name
@@ -50,8 +44,11 @@ resource "vsphere_virtual_machine" "vms" {
     thin_provisioned = false
   }
 
-  network_interface {
-    network_id = data.vsphere_network.network[count.index].id
+  dynamic "network_interface" {
+    for_each = var.vms[count.index].networks
+    content {
+      network_id = network_interface.value.id
+    }
   }
 
   clone {
